@@ -2,10 +2,10 @@ import 'babel-polyfill';
 import React from 'react';
 import {render} from 'react-dom';
 import root from 'lodash._root';
-import MainPage from 'containers/MainPage';
+import TodoApp from 'containers/TodoApp';
 import './index.css';
 
 render(
-  <MainPage />,
-  root.document.getElementById('root')
+  <TodoApp />,
+  root.document.getElementById('todo-app')
 );
