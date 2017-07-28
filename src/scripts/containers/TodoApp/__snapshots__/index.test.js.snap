@@ -1,28 +1,35 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`MainPage MainPage match expected snapshot 1`] = `
-<div
-  className="App"
->
-  <div
-    className="App-header"
-  >
-    <Logo
-      alt="logo"
-      className="App-logo"
-    />
-    <h2>
-      Welcome to React
-    </h2>
-  </div>
-  <p
-    className="App-intro"
-  >
-    To get started, edit 
-    <code>
-      src/containers/MainPage/index.js
-    </code>
-     and save to reload.
+exports[`TodoPage TodoPage match expected snapshot 1`] = `
+<div>
+  <NewTodo
+    className="container"
+    createTask={[Function]}
+  />
+  <p>
+    I  need to do 0 tasks.
   </p>
+  <TodoList
+    todos={
+      Array [
+        Object {
+          "id": 1,
+          "isDone": false,
+          "text": "Do task1",
+        },
+        Object {
+          "id": 2,
+          "isDone": false,
+          "text": "Do task2",
+        },
+        Object {
+          "id": 3,
+          "isDone": false,
+          "text": "Do task3",
+        },
+      ]
+    }
+    toggle={[Function]}
+  />
 </div>
 `;

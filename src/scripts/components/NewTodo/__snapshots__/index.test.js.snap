@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NewTodo component should match expected snapshot 1`] = `
+<div
+  className="container"
+>
+  <h1
+    className="heading"
+  >
+    New To Do List
+  </h1>
+  <input
+    onChange={[Function]}
+    type="text"
+    value=""
+  />
+  <button
+    className="button button2"
+    disabled={true}
+    onClick={[Function]}
+  >
+    Add
+  </button>
+</div>
+`;

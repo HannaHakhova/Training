@@ -1,34 +1,27 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {func, object} from 'prop-types';
 import './index.css';
 
-class Todo extends Component {
-    static propTypes = {
-        toggle: func.isRequired,
-        todo: object.isRequired
-    }
+const Todo = ({toggle, todo}) =>
+    todo.isDone ?
+        <li>
+            <del>
+                {todo.text}
+            </del>
+            <span onClick={() => toggle(todo)}>
+                {'X'}
+            </span>
+        </li> :
+        <li>
+            {todo.text}
+            <span onClick={() => toggle(todo)}>
+                {'✓'}
+            </span>
+        </li>;
 
-
-    done = event => {
-        event.preventDefault();
-        this.props.toggle(this.props.todo);
-    }
-
-    render() {
-        const todo = this.props.todo;
-        if (todo.isDone) {
-            return (
-                <li>
-                    <del>{todo.text}</del> <a href='' onClick={this.done}>{'X'}</a>
-                </li>
-            );
-        }
-        return (
-                <li>
-                    {todo.text} <a href='' onClick={this.done}>{'✓'}</a>
-                </li>
-        );
-    }
-}
+Todo.propTypes = {
+    toggle: func.isRequired,
+    todo: object.isRequired
+};
 
 export default Todo;
