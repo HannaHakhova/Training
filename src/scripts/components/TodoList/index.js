@@ -1,26 +1,23 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {func, array} from 'prop-types';
 import R from 'ramda';
 import Todo from 'components/Todo';
 import './index.css';
 
-class TodoList extends Component {
+const TodoList = ({todos, toggle}) => {
+    const orderedTodos = R.sort((a, b) => a.isDone - b.isDone, todos);
+    const itemArray = orderedTodos.map(item => <Todo todo={item} key={item.id} toggle={toggle} />);
 
-    static propTypes = {
-        toggle: func.isRequired,
-        todos: array.isRequired
-    }
-
-    render() {
-        const todos = R.sort((a, b) => a.isDone - b.isDone, this.props.todos);
-        const items = todos.map(item => <Todo todo={item} key={item.id} toggle={this.props.toggle} />);
-
-        return (
+    return (
             <ul>
-                {items}
+                {itemArray}
             </ul>
-        );
-    }
-}
+    );
+};
+
+TodoList.propTypes = {
+    toggle: func.isRequired,
+    todos: array.isRequired
+};
 
 export default TodoList;
