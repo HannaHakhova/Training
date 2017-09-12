@@ -1,33 +1,40 @@
+/* eslint-disable react/prop-types, react/no-multi-comp */
+
 import React from 'react';
-import {func} from 'prop-types';
-import {shallow, spy, mount} from 'enzyme';
+import {shallow, mount} from 'enzyme';
 import TodoApp from './index';
 
-const mockTodoList = jest.mock('components/TodoList', () => {
+jest.mock('components/TodoList', () => {
     const todo = {
         id: 1,
         text: 'Do task1',
         isDone: false
     };
-    const TodoList = ({toggle}) => <div id={'mockId'} onClick={() => { toggle(todo); }}/>;
-    TodoList.propTypes = {
-        toggle: func
-    };
+    const TodoList = ({toggle}) => <div id={'mockIdTodoList'} onClick={() => { toggle(todo); }}/>;
     return TodoList;
+});
+
+jest.mock('components/NewTodo', () => {
+    const text = 'NEW TASK!!!';
+    const NewTodo = ({createTask}) => <div id={'mockIdNewTodo'} onClick={() => { createTask(text); }}/>;
+    return NewTodo;
 });
 
 describe('TodoApp', () => {
     it('TodoApp match expected snapshot', () => {
         expect(shallow(<TodoApp/>)).toMatchSnapshot();
     });
-});
 
-it('calls toggle the button click', () => {
-    mockTodoList.find('button').simulate('click');
-    expect(mockTodoList.state(mockTodoList.id).value).toEqual({
-        id: 1,
-        text: 'Do task1',
-        isDone: true
+    it('calls toggle the button click', () => {
+        const wrapper = mount(<TodoApp/>);
+        expect(wrapper.state().todos.find(x => x.id === 1).isDone).toBeFalsy();
+        wrapper.find('#mockIdTodoList').simulate('click');
+        expect(wrapper.state().todos.find(x => x.id === 1).isDone).toBeTruthy();
+    });
+
+    it('creates task on the button click', () => {
+        const wrapper = mount(<TodoApp/>);
+        wrapper.find('#mockIdNewTodo').simulate('click');
+        expect(wrapper.state().todos.find(x => x.text === 'NEW TASK!!!').text).toContain('NEW TASK!!!');
     });
 });
-

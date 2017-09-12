@@ -1,3 +1,36 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`TodoList component should match expected snapshot 1`] = `<ul />`;
+exports[`TodoList component should match expected snapshot 1`] = `
+<ul>
+  <Todo
+    todo={
+      Object {
+        "id": 1,
+        "isDone": false,
+        "text": "Do task1",
+      }
+    }
+    toggle={[Function]}
+  />
+  <Todo
+    todo={
+      Object {
+        "id": 3,
+        "isDone": false,
+        "text": "Do task3",
+      }
+    }
+    toggle={[Function]}
+  />
+  <Todo
+    todo={
+      Object {
+        "id": 2,
+        "isDone": true,
+        "text": "Do task2",
+      }
+    }
+    toggle={[Function]}
+  />
+</ul>
+`;

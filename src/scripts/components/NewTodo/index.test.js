@@ -10,13 +10,13 @@ describe('NewTodo component', () => {
     });
 });
 
-it('create task on the button click', () => {
+it('creates task on the button click', () => {
     container.setState({value: 'to do task1'});
     container.find('button').simulate('click');
     expect(container.state().value).toEqual('');
 });
 
-it('handle change on the input', () => {
+it('handles change on the input', () => {
     container.find('input').simulate('change', {target: {value: 'testValue'} });
     expect(container.state().value).toEqual('testValue');
 });

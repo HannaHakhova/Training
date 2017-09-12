@@ -91,7 +91,7 @@ class TodoApp extends PureComponent {
             <div>
                 <NewTodo className='container' createTask={this.createTask} />
                 <p>{`I  need to do ${this.state.countOfUndoneTasks} tasks.`}</p>
-                <TodoList todos ={this.state.todos} toggle={this.toggleTask} />
+                <TodoList todos={this.state.todos} toggle={this.toggleTask} />
             </div>
         );
     }
