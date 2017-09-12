@@ -1,11 +1,25 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Todo component should match expected snapshot 1`] = `
+exports[`Todo component with empty todo object should match expected snapshot 1`] = `
 <li>
+  Do task1
   <span
     onClick={[Function]}
   >
     ✓
+  </span>
+</li>
+`;
+
+exports[`Todo component with not empty todo object should match expected snapshot 1`] = `
+<li>
+  <del>
+    Do task1
+  </del>
+  <span
+    onClick={[Function]}
+  >
+    X
   </span>
 </li>
 `;
